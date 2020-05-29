@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>게시글 상세</title>
+  </head>
+
+  <body>
+    <!-- 메뉴바 영역 -->
+    <section>
+      <h6>메뉴바</h6>
+      {% if board_list %}
+      <ul>
+        {% for board in board_list %}
+        <li>{{ board.name }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </section>
+
+    <hr />
+    <!-- 게시글 내용 -->
+    <section>
+      <h5>{{ post.board.name }}</h5>
+      <h1>{{ post.title }}</h1>
+      <hr />
+      <h5>{{ post.author.name }}</h5>
+      <h5>{{ post.date_created }}</h5>
+      <hr />
+      <p>{{ post.content}}</p>
+      <a href="{{ post.board.get_absolute_url }}"><button>목록으로</button></a>
+    </section>
+  </body>
+</html>

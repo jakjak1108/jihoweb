@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jihoweb</title>
+  </head>
+
+  <body>
+    <h1>로그인 페이지</h1>
+    <!-- 회원가입폼 -->
+    <div id="signin-form">
+      <form
+        action="{{ request.path }}{% if next %}?next={{ next }}{% endif %}"
+        method="post"
+      >
+        {% csrf_token %} {{ form }}
+        <input type="submit" value="로그인" />
+      </form>
+    </div>
+  </body>
+</html>

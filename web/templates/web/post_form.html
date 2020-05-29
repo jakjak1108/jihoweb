@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>글 작성</title>
+  </head>
+
+  <body>
+    <h1>새 글 작성</h1>
+    <div>
+      <!-- 전송된 폼에 에러가 있으면 표시 -->
+      {% if form.subject.errors %}
+      <ol>
+        {% for error in form.subject.errors %}
+        <li><strong>{{ error|escape }}</strong></li>
+        {% endfor %}
+      </ol>
+      {% endif %}
+    </div>
+    <section>
+      <!-- 글 작성 폼 -->
+      <form action="" method="POST">
+        {% csrf_token %} {{ form }}
+        <input type="submit" value="보내기" />
+      </form>
+    </section>
+  </body>
+</html>

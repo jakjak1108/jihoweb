@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>게시판 상세</title>
+  </head>
+
+  <body>
+    <h1>게시판 상세</h1>
+    {% if board.post_set.exists %}
+    <ul>
+      {% for post in board.post_set.all %}
+      <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+      {% empty %}
+      <li>작성된 글이 없습니다.</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    <a href="{% url 'board-list' %}"><button>게시판 목록으로</button></a>
+    <a href="{% url 'post-create' %}"><button>글쓰기</button></a>
+  </body>
+</html>
