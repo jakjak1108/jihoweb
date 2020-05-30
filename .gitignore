@@ -1,0 +1,9 @@
+.DS_Store
+.env
+.vscode
+.python-version
+venv
+*.pyc
+staticfiles
+node_modules
+static/media
