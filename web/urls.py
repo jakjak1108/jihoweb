@@ -16,6 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from web import views
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
+    path("signin/", views.SigninFormView.as_view(), name="signin"),
+    # 게시판
+    path("", views.HomeView.as_view(), name="home"),
+    path("boards/", views.BoardListView.as_view(), name="board-list"),
+    path("boards/<int:pk>/", views.BoardDetailView.as_view(), name="board-detail"),
+    path("posts/<int:pk>/", views.PostDetailView.as_view(), name="post-detail"),
+    path("posts/new/", views.PostCreateView.as_view(), name="post-create"),
 ]
+

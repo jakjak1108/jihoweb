@@ -30,6 +30,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 AUTH_USER_MODEL = "web.SiteUser"
+LOGIN_URL = "/signin"
+LOGOUT_REDIRECT_URL = "/"
 
 INSTALLED_APPS = [
     "django.contrib.admin",
