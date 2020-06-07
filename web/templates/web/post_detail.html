@@ -11,7 +11,9 @@
       {% if board_list %}
       <ul>
         {% for board in board_list %}
-        <li>{{ board.name }}</li>
+        <li>
+          <a href="{{ board.get_absolute_url }}">{{ board.name }}</a>
+        </li>
         {% endfor %}
       </ul>
       {% endif %}
