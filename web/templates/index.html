@@ -5,42 +5,45 @@
   </head>
 
   <body>
-    <h1>메인 페이지</h1><br>
+    <h1>메인 페이지</h1>
+    <br />
     <hr />
     <section>
-    <h3>메뉴바</h3>
-    {% if board_list %}
-    <ul>
-      {% for board in board_list %}
-      <li>
-        <a href="{{ board.get_absolute_url }}">{{ board.name }}</a>
-      </li>
-      {% endfor %}
-    </ul>
-    {% endif %}
-  </section>
-  <section>
-    <hr />
-    {% if board_list %}
-    <ul>
-      {% for board in board_list %}
-      <li>
-        <a href="{{ board.get_absolute_url }}">{{ board.name }}</a>
-        <hr />
-        {% if post.board.post_set.exists %}
+      <h3>메뉴바</h3>
+      {% if board_list %}
       <ul>
-        {% for board_post in post.board.post_set.all %}
+        {% for board in board_list %}
         <li>
-          <a href="{{ board_post.get_absolute_url }}">{{ board_post.title }}</a>
+          <a href="{{ board.get_absolute_url }}">{{ board.name }}</a>
         </li>
         {% endfor %}
-        <hr />
       </ul>
       {% endif %}
-      </li>
-      {% endfor %}
-    </ul>
-    {% endif %}
-  </section>
+    </section>
+    <section>
+      <hr />
+      {% if board_list %}
+      <ul>
+        {% for board in board_list %}
+        <li>
+          <a href="{{ board.get_absolute_url }}">{{ board.name }}</a>
+          <hr />
+          {% if board.post_set.exists %}
+          <ul>
+            {% for board_post in board.post_set.all %}
+            <li>
+              <a href="{{ board_post.get_absolute_url }}"
+                >{{ board_post.title }}</a
+              >
+            </li>
+            {% endfor %}
+            <hr />
+          </ul>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </section>
   </body>
 </html>
