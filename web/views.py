@@ -35,7 +35,20 @@ logger = logging.getLogger(__name__)
 class HomeView(TemplateView):
     # 메인 페이지
     template_name = "index.html"
-    model = Board
+    def get_context_data(self, **kwargs):
+        #웹 페이지에 보낼 데이터 세팅
+        context = {}
+        # context에 메뉴바에 표시될 게시판 리스트 정보 추가
+        context["board_list"] = Board.objects.all()
+        # kwargs로 넘어온 context 정보가 있으면 context object에 추가
+        context.update(kwargs)
+        return super().get_context_data(**context)
+
+    #def get_context_data(self, **kwargs):
+        context = {}
+        context["post.board.post_set"] = Post.objects.all()
+        context.update(kwargs)
+        return super().get_context_data(**context)
 
 
 class SigninFormView(FormView):

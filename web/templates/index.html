@@ -8,6 +8,7 @@
     <h1>메인 페이지</h1><br>
     <hr />
     <section>
+    <h3>메뉴바</h3>
     {% if board_list %}
     <ul>
       {% for board in board_list %}
@@ -19,19 +20,21 @@
     {% endif %}
   </section>
   <section>
+    <hr />
     {% if board_list %}
     <ul>
       {% for board in board_list %}
       <li>
         <a href="{{ board.get_absolute_url }}">{{ board.name }}</a>
+        <hr />
         {% if post.board.post_set.exists %}
-      <hr />
       <ul>
         {% for board_post in post.board.post_set.all %}
         <li>
           <a href="{{ board_post.get_absolute_url }}">{{ board_post.title }}</a>
         </li>
         {% endfor %}
+        <hr />
       </ul>
       {% endif %}
       </li>
