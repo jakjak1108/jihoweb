@@ -31,5 +31,18 @@
       <p>{{ post.content}}</p>
       <a href="{{ post.board.get_absolute_url }}"><button>목록으로</button></a>
     </section>
+    <!-- 이 게시판의 게시글 리스트 영역 -->
+    <section>
+      {% if post.board.post_set.exists %}
+      <hr />
+      <ul>
+        {% for board_post in post.board.post_set.all %}
+        <li>
+          <a href="{{ board_post.get_absolute_url }}">{{ board_post.title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </section>
   </body>
 </html>

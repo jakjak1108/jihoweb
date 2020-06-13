@@ -35,6 +35,7 @@ logger = logging.getLogger(__name__)
 class HomeView(TemplateView):
     # 메인 페이지
     template_name = "index.html"
+    model = Board
 
 
 class SigninFormView(FormView):
