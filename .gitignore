@@ -7,3 +7,4 @@ venv
 staticfiles
 node_modules
 static/media
+web/__pycache__
